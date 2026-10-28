@@ -16,46 +16,61 @@ CS1430_MEETINGS_PER_SEMESTER = 45
 # ---- FUNCTIONS: replace each return 0 ----
 
 def cost_per_semester(annual_cost):
-    """Give back what one semester costs."""
-    return 0
+    CPS = annual_cost / SEMESTERS_PER_YEAR
+    return CPS
 
 
 def cost_per_month(annual_cost):
-    """Give back what one month of the academic year costs."""
-    return 0
+    CPM = annual_cost / MONTHS_PER_YEAR
+    return CPM
 
 
 def cost_per_day(annual_cost):
-    """Give back what one class day costs."""
-    return 0
+    CPD = annual_cost / (CLASS_DAYS_PER_SEMESTER * SEMESTERS_PER_YEAR)
+    return CPD
 
 
 def cost_per_credit(annual_cost, credits):
-    """Give back what one credit costs. credits is the number taken this semester."""
-    return 0
+    CPCR = cost_per_semester(annual_cost) / credits
+    return CPCR
 
 
 def cost_per_class(annual_cost, credits):
-    """Give back what one 50-minute CS 1430 class meeting costs."""
-    return 0
+    CPCL = (cost_per_credit(annual_cost, credits) * CS1430_CREDITS) / (CS1430_MEETINGS_PER_SEMESTER)
+    return CPCL
 
 
 # ---- PROGRAM ----
 
 def main():
-    # Ask for the total cost for one year here.
-    # Then ask for the credits this semester.
+
+    annual_cost = float(input("Total cost for one year: "))
+    credits = int(input("Credits this semester: "))
 
     while True:
-        # Show your menu here.
+
+        print("1")
+        print("2")
+        print("3")
+        print("4")
+        print("5")
+        print("Q")
 
         choice = input("Choose an option: ")
 
         if choice == "Q":
             break
 
-        # Add a branch for each menu option here.
-
+        if choice == "1":
+            print(f"Cost per semester: ${cost_per_semester(annual_cost):.2f}")
+        elif choice == "2":
+            print(f"Cost per month: ${cost_per_month(annual_cost):.2f}")
+        elif choice == "3":
+            print(f"Cost per day: ${cost_per_day(annual_cost):.2f}")
+        elif choice == "4":
+            print(f"Cost per credit: ${cost_per_credit(annual_cost, credits):.2f}")
+        elif choice == "5":
+            print(f"Cost per class: ${cost_per_class(annual_cost, credits):.2f}")
 
 # ---- LAUNCH: do not change ----
 if __name__ == "__main__":
